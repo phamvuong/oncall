@@ -1,10 +1,12 @@
 FROM ubuntu:16.04
 
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get -y dist-upgrade \
-    && apt-get -y install libffi-dev libsasl2-dev python-dev \ 
+    && apt-get -y install libffi-dev libsasl2-dev python-dev \
         sudo libldap2-dev libssl-dev python-pip python-setuptools \
         mysql-client uwsgi uwsgi-plugin-python virtualenv nginx \ 
     && rm -rf /var/cache/apt/archives/*
+ENV DEBIAN_FRONTEND newt
 
 RUN useradd -m -s /bin/bash oncall
 
